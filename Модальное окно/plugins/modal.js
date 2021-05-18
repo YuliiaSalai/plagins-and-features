@@ -67,7 +67,7 @@ $.modal = function(options){
             $modal.classList.remove('hide');
             closing = false;
             if(typeof options.onClose === 'function'){
-                options.onClose();
+                options.onClose()
             }
         }, ANIMATION_SPEED)
     }

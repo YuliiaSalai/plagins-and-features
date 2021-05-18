@@ -17,10 +17,10 @@ const priceModal = $.modal({
     ]
 });
 
-// my homework
+// Динамическая отрисовка
 const toHTML = fruit =>`
 <div class="col">
-<div class="card">
+<div class="card" data-card="card">
 <img src=${fruit.img} class="card-img-top" alt="..." style="height: 300px">
 <div class="card-body">
   <h5 class="card-title">${fruit.title}</h5>
@@ -43,7 +43,7 @@ document.addEventListener('click', event => {
     const btnType = event.target.dataset.btn;
     const id = +event.target.dataset.id;
     const fruit = fruits.find(item=>item.id === id);
-
+    
     if(btnType === 'price'){
         priceModal.setContent(`
         <p>Price for ${fruit.title}: <strong>${fruit.price}$</strong></p>
@@ -61,3 +61,4 @@ document.addEventListener('click', event => {
         })
     }
 });
+
