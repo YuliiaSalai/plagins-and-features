@@ -1,4 +1,14 @@
-
+@keyframes shakeX {
+    0%, 100%{
+        transform: translateY(200px);
+    }
+    10%, 30%, 50%, 70%, 90%{
+        transform: translate3d(-10px,200px,0);
+    }
+    20%, 40%, 60%, 80%{
+        transform: translate3d(10px,200px,0);
+    }
+}
 .vmodal.open .modal-overlay,
 .vmodal.open .modal-window{
     opacity: 1;
@@ -76,5 +86,9 @@ button.btn.btn-primary:hover{
 }
 .btn-primary:focus{
     box-shadow: none !important;
+}
+.animate__shakeX{
+    animation: shakeX 1s;
+    animation-fill-mode: both;
 }
 

@@ -29,7 +29,7 @@ function _createModal (options){
     const modal = document.createElement('div');
     modal.classList.add('vmodal');
     modal.insertAdjacentHTML('afterbegin', `
-    <div class="modal-overlay" data-close="true">
+    <div class="modal-overlay" data-close=${options.closable}>
         <div class="modal-window" style="width: ${options.width || DEFAULT_WIDTH}">
             <div class="modal-header">
                 <span class="modal-title">${options.title || 'Window'}</span>
@@ -72,7 +72,15 @@ $.modal = function(options){
         }, ANIMATION_SPEED)
     }
     }
-    const listener = event => event.target.dataset.close && modal.close()
+    const listener = event => {
+        if(event.target.dataset.close=='true'){
+            modal.close();
+        } else if(event.target.dataset.close=='false'){
+            const modalWindow = document.querySelectorAll('.modal-window');
+            modalWindow[1].classList.add('animate__shakeX');
+            setTimeout(()=>modalWindow[1].classList.remove('animate__shakeX'),1000);
+        }
+    }
     $modal.addEventListener('click', listener);
     
     return Object.assign(modal, {
